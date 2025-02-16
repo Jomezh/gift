@@ -79,12 +79,60 @@
         .ribbon::after {
             right: 30%;
         }
+        .sparkles, .flowers, .fireflies {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .sparkle, .firefly, .flower {
+            position: absolute;
+            opacity: 0.8;
+        }
+        .sparkle {
+            width: 5px;
+            height: 5px;
+            background: pink;
+            border-radius: 50%;
+            animation: sparkle-animation 3s infinite;
+        }
+        @keyframes sparkle-animation {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.5); opacity: 0.4; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+        .flower {
+            width: 20px;
+            height: 20px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/4/49/Flower.png') no-repeat center/contain;
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.7; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        .firefly {
+            width: 6px;
+            height: 6px;
+            background: yellow;
+            border-radius: 50%;
+            animation: firefly-animation 4s infinite alternate;
+        }
+        @keyframes firefly-animation {
+            0% { transform: translate(0, 0); opacity: 0.8; }
+            50% { transform: translate(20px, 10px); opacity: 0.4; }
+            100% { transform: translate(-10px, -20px); opacity: 0.8; }
+        }
     </style>
 </head>
 <body>
+    <div class="sparkles"></div>
+    <div class="flowers"></div>
+    <div class="fireflies"></div>
     <div class="gift-container">
         <h1>Happy Birthday, My Love!</h1>
-        <p>Here’s a special gift for you...<br></p>
+        <p>Here’s a special gift for you...</p>
         
         <div class="gift-box" onclick="window.location.href='bd.html'">
             <div class="gift-lid"></div>
@@ -92,5 +140,22 @@
         </div>
         <p>May your day be as beautiful as you are!</p>
     </div>
+    <script>
+        function createElements(containerClass, elementClass, count, animationDurationRange, widthRange) {
+            const container = document.querySelector(containerClass);
+            for (let i = 0; i < count; i++) {
+                let element = document.createElement('div');
+                element.classList.add(elementClass);
+                element.style.left = Math.random() * 100 + 'vw';
+                element.style.top = Math.random() * 100 + 'vh';
+                element.style.animationDuration = (Math.random() * animationDurationRange + 3) + 's';
+                element.style.width = element.style.height = (Math.random() * widthRange + 5) + 'px';
+                container.appendChild(element);
+            }
+        }
+        createElements('.sparkles', 'sparkle', 50, 2, 5);
+        createElements('.flowers', 'flower', 20, 5, 20);
+        createElements('.fireflies', 'firefly', 15, 4, 6);
+    </script>
 </body>
 </html>
