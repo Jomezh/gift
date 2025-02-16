@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Poem</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('DALL·E 2025-02-16 23.42.52 - A romantic digital card background with a black and pink theme. The background is deep black with soft pink roses elegantly arranged around the edges,.webp') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            overflow: auto;
+            position: relative;
+        }
+        .poem-container {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            text-align: center;
+            font-family: 'Georgia', serif;
+            box-shadow: 0 0 15px rgba(255, 192, 203, 0.5);
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;           
+            font-family: 'Dancing Script', cursive;
+
+
+        }
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: pink;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: sparkle-animation 3s infinite;
+        }
+        @keyframes sparkle-animation {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.5); opacity: 0.4; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+        .flowers {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .flower {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/4/49/Flower.png') no-repeat center/contain;
+            opacity: 0.7;
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.7; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="sparkles"></div>
+    <div class="flowers"></div>
+    <div class="poem-container">
+        <h1>My Love</h1>
+        <p>And when the sun shines dear,<br>
+        I open my eyes for another day.<br>
+        I take a breath,<br>
+        And another one.<br>
+        With a sigh I begin my day,<br>
+        And for me there is no other way.</p>
+
+        <p>Eat my breakfast, drink the tea,<br>
+        Running fast to catch the bus.<br>
+        The morning sun, still unforgiving,<br>
+        Blazing down its sharp sun rays.</p>
+
+        <p>In a moment, I am myself,<br>
+        Broken from this collar of serfdom.<br>
+        Suddenly thoughts rush to my mind,<br>
+        And all of them filled with your image.</p>
+
+        <p>Your smile, so bright and warm,<br>
+        Your eyes tender and forgiving,<br>
+        Your words beautiful and calming,<br>
+        Your lips flowing with passion.</p>
+
+        <p>Your hands, soft and precious,<br>
+        Your legs, divine in their grace,<br>
+        Your hair flowing with strength,<br>
+        Your body the image of beauty</p>
+
+        <p>Oh, your words, and your laughter so dear,<br>
+        The stories that I yearn to hear.<br>
+        The songs that breath life unto me,<br>
+        Your dreams that gave reason to me.</p>
+
+        <p>All the days and nights with you,<br>
+        All the moment yearning for you.<br>
+        Every day I pray for you dear,<br>
+        Every moment I miss you dear.</p>
+
+        <p>And the days so numbered,<br>
+        Nights even less.<br>
+        All the things that keep us tied,<br>
+        I so dearly wish break loose,<br>
+        And such we can spend some time.</p>
+
+        <p>My love, my muse, my dear, darling,<br>
+        Lady so beautiful, <br>
+        Words fail their duty.<br>
+        What can I ever have done have you,<br>
+        You my dear, my breath my heart, <br>
+        Darling I'm blessed for you are here.</p>
+
+       <p>How much I thank god,<br>
+        It is never enough.<br>
+        Every day I say my prayers,<br>
+        For I thank god for you.</p>
+
+        <p>My darling my love,<br>
+        I love you dear.<br>
+        And I am forever thankful,<br>
+        That you are here.</p>
+
+        <p>A wondrous new year to you,<br>
+        Happy birthday,<br>
+        For a new chapter,<br>
+        New story.</p>
+    </div>
+    <script>
+        function createSparkles() {
+            const sparklesContainer = document.querySelector('.sparkles');
+            for (let i = 0; i < 50; i++) {
+                let sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.style.top = Math.random() * 100 + 'vh';
+                sparkle.style.left = Math.random() * 100 + 'vw';
+                sparkle.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                sparklesContainer.appendChild(sparkle);
+            }
+        }
+        function createFlowers() {
+            const flowersContainer = document.querySelector('.flowers');
+            for (let i = 0; i < 20; i++) {
+                let flower = document.createElement('div');
+                flower.classList.add('flower');
+                flower.style.left = Math.random() * 100 + 'vw';
+                flower.style.animationDuration = (Math.random() * 5 + 3) + 's';
+                flowersContainer.appendChild(flower);
+            }
+        }
+        createSparkles();
+        createFlowers();
+    </script>
+</body>
+</html>
