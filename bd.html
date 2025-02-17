@@ -72,11 +72,38 @@
             0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.7; }
             100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
+        .music-controls {
+            margin-top: 20px;
+        }
+        .glow-btn {
+            background: #ff4d79;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #ff4d79;
+            transition: 0.3s;
+        }
+
+        .glow-btn:hover {
+            background: #ff1a5e;
+            box-shadow: 0 0 20px #ff1a5e;
+        }
     </style>
 </head>
 <body>
     <div class="sparkles"></div>
     <div class="flowers"></div>
+    <audio id="bg-music" autoplay loop>
+        <source src="darling.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="music-controls">
+        <button id="toggle-music-btn" class="glow-btn">Play me</button>
+
+    </div>
     <div class="poem-container">
         <h1>My Love</h1>
         <p>And when the sun shines dear,<br>
@@ -125,30 +152,26 @@
         <p>My love, my muse, my dear, darling,<br>
         Lady so beautiful, <br>
         Words fail their duty.<br>
-        What can I ever have done to have you,<br>
+        What can I ever have done have you,<br>
         You my dear, my breath my heart, <br>
         Darling I'm blessed for you are here.</p>
 
        <p>How much I thank god,<br>
         It is never enough.<br>
         Every day I say my prayers,<br>
-        For I thank god for this blessing.</p>
-
-        <p> To know you and to see you,<br>
-            To be with you and talk to you, <br>
-            To love you and to be loved by you, <br>
-            Oh how blessed am I </p>
+        For I thank god for you.</p>
 
         <p>My darling my love,<br>
-        I love you my dear.<br>
+        I love you dear.<br>
         And I am forever thankful,<br>
         That you are here.</p>
 
-        <p>And a wondrous new year to you darling,<br>
+        <p>A wondrous new year to you,<br>
         Happy birthday,<br>
         For a new chapter,<br>
-        New story to begin.</p>
+        New story.</p>
     </div>
+    
     <script>
         function createSparkles() {
             const sparklesContainer = document.querySelector('.sparkles');
@@ -171,6 +194,29 @@
                 flowersContainer.appendChild(flower);
             }
         }
+        function toggleMusic() {
+            let music = document.getElementById("bg-music");
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+        let music = document.getElementById("bg-music");
+        
+        if (music) {
+            document.getElementById("toggle-music-btn").addEventListener("click", function () {
+                if (music.paused) {
+                    music.play().catch(error => console.log("Autoplay blocked:", error));
+                } else {
+                    music.pause();
+                }
+            });
+        } else {
+            console.error("Audio element not found!");
+        }
+    });
         createSparkles();
         createFlowers();
     </script>
